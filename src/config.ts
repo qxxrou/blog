@@ -12,248 +12,107 @@ import type {
 	SidebarLayoutConfig,
 	SiteConfig,
 } from "./types/config";
+
 import { LinkPreset } from "./types/config";
 import { getTranslateLanguageFromConfig } from "./utils/language-utils";
 
-// 移除i18n导入以避免循环依赖
-
-// 定义站点语言
-const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
+// Define site language
+const SITE_LANG = "zh_CN"; // Language code, e.g., 'en', 'zh_CN', 'ja', etc.
 
 export const siteConfig: SiteConfig = {
-	title: "Mizuki",
-	subtitle: "One demo website",
+	title: "浅笑心柔",
+	subtitle: "qianxiaoxinrou",
 
 	lang: SITE_LANG,
 
 	themeColor: {
-		hue: 210, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		fixed: false, // 对访问者隐藏主题色选择器
+		hue: 345, // Default hue for theme color, range from 0 to 360. e.g., red: 0, cyan: 200, teal: 250, pink: 345
+		fixed: false, // Hide theme color picker for visitors
 	},
 	translate: {
-		enable: true, // 启用翻译功能
-		service: "client.edge", // 使用 Edge 浏览器翻译服务
-		defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // 根据站点语言自动设置默认翻译语言
-		showSelectTag: false, // 不显示默认语言选择下拉菜单，使用自定义按钮
-		autoDiscriminate: true, // 自动检测用户语言
-		ignoreClasses: ["ignore", "banner-title", "banner-subtitle"], // 翻译时忽略的 CSS 类名
-		ignoreTags: ["script", "style", "code", "pre"], // 翻译时忽略的 HTML 标签
+		enable: false, // Enable translation feature
+		service: "client.edge", // Use Edge browser translation service
+		defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // Automatically set default translation language based on site language
+		showSelectTag: false, // Don't show default language selection dropdown, use custom button
+		autoDiscriminate: true, // Automatically detect user language
+		ignoreClasses: ["ignore", "banner-title", "banner-subtitle"], // CSS class names to ignore for translation
+		ignoreTags: ["script", "style", "code", "pre"], // HTML tags to ignore for translation
 	},
 	banner: {
-		enable: true, // 是否启动Banner壁纸模式
+		enable: true, // Temporarily disable banner to improve loading speed
 
-		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
+		// Support single image or image array, carousel is automatically enabled when array length > 1
 		src: {
-			desktop: [
-				"/assets/desktop-banner/1.webp",
-				"/assets/desktop-banner/2.webp",
-				"/assets/desktop-banner/3.webp",
-				"/assets/desktop-banner/4.webp",
-				"/assets/desktop-banner/5.webp",
-				"/assets/desktop-banner/6.webp",
-			], // 桌面横幅图片
-			mobile: [
-				"/assets/mobile-banner/1.webp",
-				"/assets/mobile-banner/2.webp",
-				"/assets/mobile-banner/3.webp",
-				"/assets/mobile-banner/4.webp",
-				"/assets/mobile-banner/5.webp",
-				"/assets/mobile-banner/6.webp",
-			], // 移动横幅图片
-		}, // 使用本地横幅图片
+			desktop: ["assets/desktop-banner/1.webp"], // Desktop banner images
+			mobile: ["assets/mobile-banner/1.webp"], // Mobile banner images
+		}, // Use local banner images
 
-		position: "center", // 等同于 object-position，仅支持 'top', 'center', 'bottom'。默认为 'center'
+		position: "center", // Equivalent to object-position, only supports 'top', 'center', 'bottom'. Default is 'center'
 
 		carousel: {
-			enable: true, // 为 true 时：为多张图片启用轮播。为 false 时：从数组中随机显示一张图片
+			enable: true, // When true: enable carousel for multiple images. When false: randomly display one image from the array
 
-			interval: 1.5, // 轮播间隔时间（秒）
+			interval: 1, // Carousel interval time (seconds)
 		},
-
-		// PicFlow API支持(智能图片API)
-		imageApi: {
-			enable: false, // 启用图片API
-			url: "http://domain.com/api_v2.php?format=text&count=4", // API地址，返回每行一个图片链接的文本
-		},
-		// 这里需要使用PicFlow API的Text返回类型,所以我们需要format=text参数
-		// 项目地址:https://github.com/matsuzaka-yuki/PicFlow-API
-		// 请自行搭建API
 
 		homeText: {
-			enable: true, // 在主页显示自定义文本
-			title: "Beautiful Mizuki!", // 主页横幅主标题
+			enable: false, // Display custom text on homepage
+			title: "qianxiaoxinrou", // Homepage banner main title
 
 			subtitle: [
-				"A Showcase Demo Site",
-				"Carousel Highlight: Innovation",
-				"Carousel Focus: User Experience",
-				"Carousel Spot: Core Advantages",
-			],
+				"One demo website",
+				"Carousel Text1",
+				"Carousel Text2",
+				"Carousel Text3",
+			], // Homepage banner subtitle, supports multiple texts
 			typewriter: {
-				enable: true, // 启用副标题打字机效果
+				enable: true, // Enable subtitle typewriter effect
 
-				speed: 100, // 打字速度（毫秒）
-				deleteSpeed: 50, // 删除速度（毫秒）
-				pauseTime: 2000, // 完全显示后的暂停时间（毫秒）
+				speed: 100, // Typing speed (milliseconds)
+				deleteSpeed: 50, // Delete speed (milliseconds)
+				pauseTime: 2000, // Pause time after complete display (milliseconds)
 			},
 		},
 
 		credit: {
-			enable: false, // 显示横幅图片来源文本
+			enable: false, // Display banner image source text
 
-			text: "Describe", // 要显示的来源文本
-			url: "", // （可选）原始艺术品或艺术家页面的 URL 链接
-		},
-
-		navbar: {
-			transparentMode: "semifull", // 导航栏透明模式："semi" 半透明加圆角，"full" 完全透明，"semifull" 动态透明
+			text: "Describe", // Source text to display
+			url: "", // (Optional) URL link to original artwork or artist page
 		},
 	},
 	toc: {
-		enable: true, // 启用目录功能
-		depth: 3, // 目录深度，1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推
+		enable: true, // Enable table of contents feature
+		depth: 3, // TOC depth, 1-6, 1 means only show h1 headings, 2 means show h1 and h2 headings, and so on
 	},
 	favicon: [
-		// 留空以使用默认 favicon
+		// Leave empty to use default favicon
 		// {
-		//   src: '/favicon/icon.png',    // 图标文件路径
-		//   theme: 'light',              // 可选，指定主题 'light' | 'dark'
-		//   sizes: '32x32',              // 可选，图标大小
+		//   src: '/favicon/icon.png',    // Icon file path
+		//   theme: 'light',              // Optional, specify theme 'light' | 'dark'
+		//   sizes: '32x32',              // Optional, icon size
 		// }
 	],
-};
-export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
-	enable: true, // 启用全屏壁纸功能,非Banner模式下生效
-	src: {
-		desktop: [
-			"/assets/desktop-banner/1.webp",
-			"/assets/desktop-banner/2.webp",
-			"/assets/desktop-banner/3.webp",
-			"/assets/desktop-banner/4.webp",
-			"/assets/desktop-banner/5.webp",
-			"/assets/desktop-banner/6.webp",
-		], // 桌面横幅图片
-		mobile: [
-			"/assets/mobile-banner/1.webp",
-			"/assets/mobile-banner/2.webp",
-			"/assets/mobile-banner/3.webp",
-			"/assets/mobile-banner/4.webp",
-			"/assets/mobile-banner/5.webp",
-			"/assets/mobile-banner/6.webp",
-		], // 移动横幅图片
-	}, // 使用本地横幅图片
-	position: "center", // 壁纸位置，等同于 object-position
-	carousel: {
-		enable: true, // 启用轮播
-		interval: 1, // 轮播间隔时间（秒）
-	},
-	zIndex: -1, // 层级，确保壁纸在背景层
-	opacity: 0.8, // 壁纸透明度
-	blur: 1, // 背景模糊程度
 };
 
 export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
-		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
-		{
-			name: "链接",
-			url: "/links/",
-			icon: "material-symbols:link",
-			children: [
-				{
-					name: "GitHub",
-					url: "https://github.com/matsuzaka-yuki/Mizuki",
-					external: true,
-					icon: "fa6-brands:github",
-				},
-				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/701864046",
-					external: true,
-					icon: "fa6-brands:bilibili",
-				},
-				{
-					name: "Gitee",
-					url: "https://gitee.com/matsuzakayuki/Mizuki",
-					external: true,
-					icon: "mdi:git",
-				},
-			],
-		},
-		{
-			name: "我的",
-			url: "/content/",
-			icon: "material-symbols:person",
-			children: [
-				LinkPreset.Anime,
-				LinkPreset.Diary,
-				{
-					name: "相册",
-					url: "/albums/",
-					icon: "material-symbols:photo-library",
-				},
-			],
-		},
-		{
-			name: "关于",
-			url: "/content/",
-			icon: "material-symbols:info",
-			children: [LinkPreset.About, LinkPreset.Friends],
-		},
-		{
-			name: "其他",
-			url: "#",
-			icon: "material-symbols:more-horiz",
-			children: [
-				{
-					name: "项目展示",
-					url: "/projects/",
-					icon: "material-symbols:work",
-				},
-				{
-					name: "技能展示",
-					url: "/skills/",
-					icon: "material-symbols:psychology",
-				},
-				{
-					name: "时间线",
-					url: "/timeline/",
-					icon: "material-symbols:timeline",
-				},
-			],
-		},
+		// {
+		// 	name: "GitHub",
+		// 	url: "https://github.com/matsuzaka-yuki", // Internal links should not include base path as it will be automatically added
+
+		// 	external: true, // Show external link icon and open in new tab
+		// },
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.gif", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
-	name: "Mizuki",
-	bio: "世界很大,一定要去看看",
-	links: [
-		{
-			name: "Bilibli",
-			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
-		},
-		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/matsuzakayuki",
-		},
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
-		},
-	],
-	// Umami统计部份，记得在layout插入Umami的head标签
-	umami: {
-		enable: false, // 是否显示umami统计
-		shareId: "", //填入共享URL最后面那一串  比如：https://eu.umami.is/api/share/2dKQ5T0WrUn6AYtr 你就填入2dKQ5T0WrUn6AYtr
-		region: "eu", //Umami有两个区域，按需选择即可  比如：https://eu.umami.is 你就填入eu
-	},
+	avatar: "assets/images/avatar.jpg", // Relative to /src directory. If starts with '/', relative to /public directory
+	name: "qianxiaoxinrou",
+	bio: "这是一段无聊的介绍",
+	links: [],
 };
 
 export const licenseConfig: LicenseConfig = {
@@ -263,39 +122,33 @@ export const licenseConfig: LicenseConfig = {
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	// 注意：某些样式（如背景颜色）已被覆盖，请参阅 astro.config.mjs 文件。
-	// 请选择深色主题，因为此博客主题目前仅支持深色背景
+	// Note: Some styles (like background color) have been overridden, see astro.config.mjs file.
+	// Please choose a dark theme as this blog theme currently only supports dark backgrounds
 	theme: "github-dark",
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+	enable: false, // Enable the comment function. When it is set to false, the comment component will not be displayed in the article area.
 	twikoo: {
 		envId: "https://twikoo.vercel.app",
 	},
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "公告", // 公告标题
-	content: "欢迎来到我的博客！这是一个示例公告。", // 公告内容
-	closable: true, // 允许用户关闭公告
+	title: "Announcement", // Announcement title
+	content: "Welcome to my blog! This is a sample announcement.", // Announcement content
+	closable: false, // Allow users to close the announcement
 	link: {
-		enable: true, // 启用链接
-		text: "了解更多", // 链接文本
-		url: "/about/", // 链接 URL
-		external: false, // 内部链接
+		enable: false, // Enable link
+		text: "Learn More", // Link text
+		url: "/about/", // Link URL
+		external: false, // Internal link
 	},
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // 启用音乐播放器功能
+	enable: false, // Enable music player feature
 };
-
-export const footerConfig: FooterConfig = {
-	enable: false, // 是否启用Footer HTML注入功能
-};
-
-// 直接编辑 FooterConfig.html 文件来添加备案号等自定义内容
 
 /**
  * 侧边栏布局配置
@@ -400,9 +253,9 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 			desktop: 1280,
 		},
 		// 不同设备的布局模式
-		//hidden:不显示侧边栏(桌面端)   drawer:抽屉模式(移动端不显示)   sidebar:显示侧边栏
+		//hidden:不显示侧边栏 sidebar:显示侧边栏
 		layout: {
-			// 移动端：抽屉模式
+			// 移动端：隐藏侧边栏
 			mobile: "sidebar",
 			// 平板端：显示侧边栏
 			tablet: "sidebar",
@@ -412,34 +265,10 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 	},
 };
 
-export const sakuraConfig: SakuraConfig = {
-	enable: false, // 默认关闭樱花特效
-	sakuraNum: 21, // 樱花数量
-	limitTimes: -1, // 樱花越界限制次数，-1为无限循环
-	size: {
-		min: 0.5, // 樱花最小尺寸倍数
-		max: 1.1, // 樱花最大尺寸倍数
-	},
-	speed: {
-		horizontal: {
-			min: -1.7, // 水平移动速度最小值
-			max: -1.2, // 水平移动速度最大值
-		},
-		vertical: {
-			min: 1.5, // 垂直移动速度最小值
-			max: 2.2, // 垂直移动速度最大值
-		},
-		rotation: 0.03, // 旋转速度
-	},
-	zIndex: 100, // 层级，确保樱花在合适的层级显示
-};
-
 // 导出所有配置的统一接口
 export const widgetConfigs = {
 	profile: profileConfig,
 	announcement: announcementConfig,
 	music: musicPlayerConfig,
 	layout: sidebarLayoutConfig,
-	sakura: sakuraConfig,
-	fullscreenWallpaper: fullscreenWallpaperConfig,
 } as const;

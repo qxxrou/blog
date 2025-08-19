@@ -6,35 +6,22 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![Mizuki 预览](./README.webp)
-![Mizuki 预览](./README2.webp)
 
 一个现代化、功能丰富的静态博客模板，基于 [Astro](https://astro.build) 构建，具有先进的功能和精美的设计。
 
-[**🖥️ 在线演示**](https://mizuki.mysqil.com/)
-[**📝 用户文档**](https://docs.mizuki.mysqil.com/)
+[**🖥️ 在线演示**](https://blog.mysqil.com/)
 
 🌏 README 语言
 [**中文**](./README.md) /
 [**English**](./README.en.md) /
 [**日本語**](./docs/README.ja.md) /
-[**中文繁体**](./docs/README.tw.md) /
+[**한국어**](./docs/README.ko.md) /
+[**Français**](./docs/README.fr.md) /
+[**Deutsch**](./docs/README.de.md) /
+[**Español**](./docs/README.es.md) /
+[**Русский**](./docs/README.ru.md)
 
-## 🆕 v4.6 版本更新
-- **番剧页面：** 重构了更可爱好看的番剧页面，包括番剧列表、番剧详情和番剧时间轴。
-- **相册页面：** 重构了相册页面,使用分页+文件夹数据索引方案
-- **全新的动画：** 使用了全新的动画组件，使页面更加流畅和美观
-- **图片API的支持** 支持图片API，可以快速获取图片信息,使用(PicFlow API项目)[https://github.com/matsuzaka-yuki/PicFlow-API]
-
-## 🆕 v3.4 版本更新
-- **新增页面：** 添加了项目展示、技能展示和时间线专属页面，用于展示您的工作、专业技能和成长历程。
-- **下拉菜单修复：** 解决了下拉菜单点击时出现边框轮廓的问题，提升了界面一致性。
-- **搜索功能优化：** 增强了搜索功能的性能和准确性。
-- **底部HTML注入：** 引入了新功能，允许在页面底部注入自定义HTML内容，提供更大的灵活性。
-
-
-## 🆕 v3.3 版本更新
-- **Mermaid 语法支持：** 添加了对 Mermaid 图表语法的支持，现在可以在 Markdown 中直接嵌入流程图、序列图、甘特图等。
-- **Umami 访问统计：** 添加了对 Umami 访问统计的支持，可以轻松集成网站访问数据分析。
+## 🆕 v3.0 版本更新
 
 ![Configuration](configuration.svg)
 
@@ -68,7 +55,6 @@
 - [x] 使用 [Swup](https://swup.js.org/) 实现流畅的动画和页面过渡
 - [x] 明暗主题切换，支持系统偏好检测
 - [x] 可自定义主题色彩和动态横幅轮播
-- [x] 全屏背景图片，支持轮播、透明度和模糊效果
 - [x] 全设备响应式设计
 - [x] 使用 JetBrains Mono 字体的优美排版
 
