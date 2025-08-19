@@ -25,10 +25,10 @@ import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 // https://astro.build/config
 export default defineConfig({
-	site: "https://blog.mysqil.com/",
+	site: "https://www.xn--vuq2b072birn1jq.icu/",
 
 	base: "/",
-	trailingSlash: "always",
+	trailingSlash: "ignore",
 	integrations: [
 		tailwind({
 			nesting: true,
