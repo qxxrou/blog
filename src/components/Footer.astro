@@ -9,7 +9,7 @@ const currentYear = new Date().getFullYear();
 
 // 读取FooterConfig.html文件内容
 let customFooterHtml = "";
-if (footerConfig.enable) {
+if (footerConfig?.enable) {
 	try {
 		const footerConfigPath = path.join(
 			process.cwd(),

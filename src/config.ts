@@ -8,7 +8,6 @@ import type {
 	MusicPlayerConfig,
 	NavBarConfig,
 	ProfileConfig,
-	SakuraConfig,
 	SidebarLayoutConfig,
 	SiteConfig,
 } from "./types/config";
@@ -19,6 +18,18 @@ import { getTranslateLanguageFromConfig } from "./utils/language-utils";
 // Define site language
 const SITE_LANG = "zh_CN"; // Language code, e.g., 'en', 'zh_CN', 'ja', etc.
 
+export const footerConfig: FooterConfig = {
+	enable: true,
+};
+
+export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
+	enable: false,
+	src: {
+		desktop: undefined,
+		mobile: undefined,
+	},
+};
+
 export const siteConfig: SiteConfig = {
 	title: "浅笑心柔",
 	subtitle: "qianxiaoxinrou",
@@ -27,7 +38,7 @@ export const siteConfig: SiteConfig = {
 
 	themeColor: {
 		hue: 345, // Default hue for theme color, range from 0 to 360. e.g., red: 0, cyan: 200, teal: 250, pink: 345
-		fixed: false, // Hide theme color picker for visitors
+		fixed: true, // Hide theme color picker for visitors
 	},
 	translate: {
 		enable: false, // Enable translation feature
@@ -116,7 +127,7 @@ export const profileConfig: ProfileConfig = {
 };
 
 export const licenseConfig: LicenseConfig = {
-	enable: true,
+	enable: false,
 	name: "CC BY-NC-SA 4.0",
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
 };
