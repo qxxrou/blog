@@ -1,5 +1,4 @@
 import { getImage } from "astro:assets";
-import { getCollection } from "astro:content";
 import type { RSSFeedItem } from "@astrojs/rss";
 import rss from "@astrojs/rss";
 import type { APIContext, ImageMetadata } from "astro";
@@ -110,27 +109,8 @@ export async function GET(context: APIContext) {
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
-<<<<<<< HEAD
 		site: context.site,
 		items: feed,
-=======
-		site: context.site ?? "https://mizuki.vercel.app",
-
-		items: blog.map((post) => {
-			const content =
-				typeof post.body === "string" ? post.body : String(post.body || "");
-			const cleanedContent = stripInvalidXmlChars(content);
-			return {
-				title: post.data.title,
-				pubDate: post.data.published,
-				description: post.data.description || "",
-				link: url(`/posts/${post.slug}/`),
-				content: sanitizeHtml(parser.render(cleanedContent), {
-					allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-				}),
-			};
-		}),
->>>>>>> 6b8848a (首次提交)
 		customData: `<language>${siteConfig.lang}</language>`,
 	});
 }
